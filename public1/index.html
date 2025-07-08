@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏴‍☠️ Skill Matrix - Developer Crew Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header with quirky developer vibes -->
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">
+                <span class="skull">🏴‍☠️</span>
+                <span class="text">Skill Matrix</span>
+                <span class="subtitle">// Developer Crew Tracker</span>
+            </h1>
+            <div class="header-actions">
+                <button class="btn btn-primary" onclick="openAddMemberModal()">
+                    👨‍💻 Add Crew Member
+                </button>
+                <button class="btn btn-secondary" onclick="openAddSkillModal()">
+                    ⚡ Add Skill
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main content area -->
+    <main class="main">
+        <div class="container">
+            <!-- Stats dashboard -->
+            <div class="stats-grid" id="statsGrid">
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-value" id="totalMembers">0</div>
+                    <div class="stat-label">Crew Members</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⚡</div>
+                    <div class="stat-value" id="totalSkills">0</div>
+                    <div class="stat-label">Skills Tracked</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🔥</div>
+                    <div class="stat-value" id="avgSkillLevel">0</div>
+                    <div class="stat-label">Avg Skill Level</div>
+                </div>
+            </div>
+
+            <!-- Team members grid -->
+            <div class="section-header">
+                <h2>🧑‍💻 The Crew</h2>
+                <p class="section-subtitle">// Your development team's skill matrix</p>
+            </div>
+            
+            <div class="members-grid" id="membersGrid">
+                <!-- Members will be loaded here dynamically -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Add Member Modal -->
+    <div class="modal" id="addMemberModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>👨‍💻 Add New Crew Member</h3>
+                <button class="close-btn" onclick="closeModal('addMemberModal')">&times;</button>
+            </div>
+            <form id="addMemberForm" class="form">
+                <div class="form-group">
+                    <label for="memberName">Name</label>
+                    <input type="text" id="memberName" required placeholder="Captain JavaScript">
+                </div>
+                <div class="form-group">
+                    <label for="memberRole">Role</label>
+                    <input type="text" id="memberRole" required placeholder="Full Stack Developer">
+                </div>
+                <div class="form-group">
+                    <label for="memberAvatar">Avatar Emoji</label>
+                    <input type="text" id="memberAvatar" placeholder="🏴‍☠️" maxlength="2">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('addMemberModal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Add to Crew</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Skill Modal -->
+    <div class="modal" id="addSkillModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>⚡ Add New Skill</h3>
+                <button class="close-btn" onclick="closeModal('addSkillModal')">&times;</button>
+            </div>
+            <form id="addSkillForm" class="form">
+                <div class="form-group">
+                    <label for="skillName">Skill Name</label>
+                    <input type="text" id="skillName" required placeholder="TypeScript">
+                </div>
+                <div class="form-group">
+                    <label for="skillCategory">Category</label>
+                    <select id="skillCategory" required>
+                        <option value="">Select category...</option>
+                        <option value="Frontend">Frontend</option>
+                        <option value="Backend">Backend</option>
+                        <option value="Database">Database</option>
+                        <option value="DevOps">DevOps</option>
+                        <option value="Cloud">Cloud</option>
+                        <option value="Tools">Tools</option>
+                        <option value="Mobile">Mobile</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="skillIcon">Icon Emoji</label>
+                    <input type="text" id="skillIcon" placeholder="🔷" maxlength="2">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('addSkillModal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Add Skill</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Skill Assignment Modal -->
+    <div class="modal" id="skillAssignModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="assignModalTitle">⚡ Assign Skills</h3>
+                <button class="close-btn" onclick="closeModal('skillAssignModal')">&times;</button>
+            </div>
+            <div class="skills-assignment" id="skillsAssignment">
+                <!-- Skills will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
